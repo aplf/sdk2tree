@@ -1,4 +1,4 @@
-= sdk2tree =
+# sdk2tree
 
 Code used in the paper [On dynamic succinct graph representations](https://arxiv.org/).
 It includes code provided by authors of papers listed below.

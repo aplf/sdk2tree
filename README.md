@@ -1,14 +1,14 @@
-# sdk2tree
+# sdk2tree graph data structure
 
-
+## Description
 
 This repository contains the source-code of the **sdk2tree**, the dynamic k<sup>2</sup>-tree implementation used in the paper [On dynamic succinct graph representations](https://arxiv.org/).
-
 
 We also provide the source-code of other k<sup>2</sup>-tree implementations compared against our **sdk2tree**.
 They are listed below, identified by the naming scheme provided in section *Experimental analysis* of our paper.
 For each version we provide references to their respective publications.
 
+## Implementations
 
 * **sdk2tree** - this implementation relies on ideas proposed in paper [Dynamic Data Structures for Document Collections and Graphs](https://doi.org/10.1145/2745754.2745778),
 by J. Ian Munro, Yakov Nekrich, and Jeffrey Scott Vitter (2015), and it makes use of [Efficient Set Operations over k2-Trees](https://doi.org/10.1109/DCC.2015.9),
@@ -34,4 +34,140 @@ by Diego Arroyuelo, Guillermo de Bernardo, Travis Gagie, and Gonzalo Navarro (20
 
         /k2trie
 
+
+## Usage examples
+
+### Dummy dataset to highlight how to use the interfaces.
+
+We include dummy test files in:
+
+        dataset/
+
+### Executing each implementation.
+
 All implementations are provided with working **Makefile** scripts to easily compile and execute as needed.
+
+#### **sdk2tree**
+
+        cd src
+        make
+        ./project 9 < ../dataset/dataset-adds-lists.tsv
+
+            Running dynamic k2tree (INESC-ID). 
+            N[0] ->2
+            N[1] ->2
+            N[2] ->1
+            N[3] ->1
+            N[4] ->1
+            N[5] ->2
+            N[6] ->1
+            N[7] ->1
+            N[8] ->0
+            > Exiting.
+            Loop time: 0.000203
+
+        #### Argument info:
+        # 9 - number of vertices
+        # ../dataset/dataset-adds-lists.tsv - path to a graph operations file with edge additions followed by listings
+
+#### **k2tree**
+
+        cd k2tree
+        make
+
+        # This is the static k2-tree version, need to generate .kt format file first.
+        ./kt_buildTree ../dataset/dataset.adj dataset
+        mv dataset.kt ../dataset/
+
+        ./project ../dataset/dataset 9 512 4 4 3 2 < ../dataset/dataset-lists.tsv
+
+            (2)	
+            (2)	
+            (1)	
+            (1)	
+            (1)	
+            (2)	
+            (0)	
+            (0)	
+            (0)	
+            > Exiting.
+            Loop time: 70.000000
+
+        #### Argument info:
+        # 9 - number of vertices
+        # 512 - TODO
+        # 4 - TODO
+        # 4 - TODO
+        # 3 - TODO
+        # 2 - TODO
+        # ../dataset/dataset-lists.tsv - path to a graph operations file with neighborhood listing operations exclusively
+
+
+#### **dk2tree**
+
+        cd dk2tree
+        make
+        cd src
+        ./project dataset 9 512 4 4 3 2 < ../../dataset/dataset-adds-lists.tsv
+
+            > Running dynamic k2tree (UDC). 
+            > Finished parsing arguments. 
+            > Got kValues.
+            > Created empty K2Tree.
+            > K2Tree stack initiated.
+            > Initial K2Tree info:
+            N[0] ->2
+            N[1] ->2
+            N[2] ->1
+            N[3] ->1
+            N[4] ->1
+            N[5] ->2
+            N[6] ->1
+            N[7] ->1
+            N[8] ->0
+            manager 0 2 blocks
+            manager 1 0 blocks
+            manager 2 0 blocks
+            manager 3 0 blocks
+            [INFO ][nodeManager-mem-complete.c:310]: sizes 545208 1024
+            [INFO ][k2tree-common.c:1018]: mgr: 550328
+            Memory usage : 550328
+            Disk usage : 1824
+            Destroying node manager.Creation time = -nan
+            > Exiting.
+            Loop time: 505.000000
+
+        #### Argument info:
+        # dataset - base name of the tested file.
+        # 9 - number of vertices
+        # 512 - TODO
+        # 4 - TODO
+        # 4 - TODO
+        # 3 - TODO
+        # 2 - TODO
+        # ../../dataset/dataset-adds-lists.tsv - path to a graph operations file with edge additions followed by listings
+
+#### **k2trie**
+
+        cd k2trie
+        make
+
+        ./project 96 96 256 12 16 0.99 9 < ../dataset/dataset-adds-checks.tsv 
+
+            TODO OUTPUT
+
+        #### Argument info:
+        # 96 - TODO
+        # 96 - TODO
+        # 256 - TODO
+        # 12 - TODO
+        # 16 - TODO
+        # 0.99 - TODO
+        # 9 - number of vertices
+        # ../../dataset/dataset-adds-lists.tsv - path to a graph operations file with edge additions followed by listings
+
+
+## Team
+
+The following institutions collaborated in the development of this work:
+

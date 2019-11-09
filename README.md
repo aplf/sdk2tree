@@ -171,3 +171,7 @@ All implementations are provided with working **Makefile** scripts to easily com
 
 The following institutions collaborated in the development of this work:
 
+![Instituto Superior Técnico](https://github.com/aplf/sdk2tree/blob/master/img/citic_logo.JPEG)
+![INESC-ID](https://github.com/aplf/sdk2tree/blob/master/img/inesc-id_logo.png)
+![CITIC](https://github.com/aplf/sdk2tree/blob/master/img/citic_logo.JPEG)
+![Enxio](https://github.com/aplf/sdk2tree/blob/master/img/enxenio_logo.png)

@@ -34,4 +34,4 @@ by Diego Arroyuelo, Guillermo de Bernardo, Travis Gagie, and Gonzalo Navarro (20
 
         /k2trie
 
-All implementations are provided with working **Makefile** scripts easily compile and execute as needed.
+All implementations are provided with working **Makefile** scripts to easily compile and execute as needed.

@@ -165,16 +165,3 @@ All implementations are provided with working **Makefile** scripts to easily com
         # 0.99 - TODO
         # 9 - number of vertices
         # ../../dataset/dataset-adds-lists.tsv - path to a graph operations file with edge additions followed by listings
-
-
-## Team
-
-The following institutions collaborated in the development of this work:
-
-![Instituto Superior Técnico](https://github.com/aplf/sdk2tree/blob/master/img/ist_logo.png | width=100)
-
-![INESC-ID](https://github.com/aplf/sdk2tree/blob/master/img/inesc-id_logo.png | width=100)
-
-![CITIC](https://github.com/aplf/sdk2tree/blob/master/img/citic_logo.JPEG | width=100)
-
-![Enxio](https://github.com/aplf/sdk2tree/blob/master/img/enxenio_logo.png | width=100)

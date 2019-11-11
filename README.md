@@ -79,7 +79,7 @@ All implementations are provided with working **Makefile** scripts to easily com
         ./kt_buildTree ../dataset/dataset.adj dataset
         mv dataset.kt ../dataset/
 
-        ./project ../dataset/dataset 9 512 4 4 3 2 < ../dataset/dataset-lists.tsv
+        ./project ../dataset/dataset dataset-lists_eval < ../dataset/dataset-lists.tsv
 
             (2)	
             (2)	

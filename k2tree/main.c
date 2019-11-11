@@ -26,8 +26,8 @@ main(int argc, char *argv[]) {
 		exit(EXIT_FAILURE);
 	}
   */
-  if(argc<3){
-		fprintf(stderr,"USAGE: %s <GRAPH> <outfile>\n", argv[0]);
+  if(argc<2){
+		fprintf(stderr,"USAGE: %s <GRAPH>\n", argv[0]);
 		exit(EXIT_FAILURE);
 	}
 

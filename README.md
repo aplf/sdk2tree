@@ -172,12 +172,12 @@ All implementations are provided with working **Makefile** scripts to easily com
 
         #### Argument info:
         # 96 - S1
-        # 96 - S2
-        # 1024 - S3
-        # 8 - L1
-        # 10 - L2
-        # 0.99 - Alpha
-        # 257 - number of vertices
+        # 96 - S2: Default size for blocks at depths between L1 and L2
+        # 1024 - S3: Default size for blocks at depths higher than L2 
+        # 8 - L1: Maximum depth for pointer-based trie (the trie uses pointers up to this depth). The code assumes that at least L1 levels exist
+        # 10 - L2: Depth separating block sizes S2 and S3
+        # 0.99 - Alpha: Node filling rate
+        # 257 - Number of nodes in the graph 
 		## For more information on these parameters, check
 		## [Faster Dynamic Compressed d-ary Relations]
 		## (https://doi.org/10.1007/978-3-030-32686-9_30)

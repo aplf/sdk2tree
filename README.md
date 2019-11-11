@@ -151,18 +151,32 @@ All implementations are provided with working **Makefile** scripts to easily com
         cd k2trie
         make
 
-        ./project 96 96 256 12 16 0.99 9 < ../dataset/dataset-adds-checks.tsv 
-
-            TODO OUTPUT
+        ./project 96 96 1024 8 10 0.99 257 < ../dataset/dataset-adds-checks.tsv
+		
+			Got 96 96 1024, 8 10, 0.990000, 257, 9
+			1
+			1
+			1
+			1
+			1
+			1
+			1
+			1
+			1
+			1
+			1
+			0
+			> Exiting.
+			Loop time: 86.000000
 
         #### Argument info:
         # 96 - S1
         # 96 - S2
-        # 256 - S3
-        # 12 - L1
-        # 16 - L2
+        # 1024 - S3
+        # 8 - L1
+        # 10 - L2
         # 0.99 - Alpha
-        # 9 - number of vertices
+        # 257 - number of vertices
 		## For more information on these parameters, check
 		## [Faster Dynamic Compressed d-ary Relations](https://doi.org/10.1007/978-3-030-32686-9_30)
         # ../../dataset/dataset-adds-lists.tsv - path to a graph operations file with 

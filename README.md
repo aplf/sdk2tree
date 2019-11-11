@@ -142,7 +142,8 @@ All implementations are provided with working **Makefile** scripts to easily com
         # 3 - n-levels
         # 2 - last-k-value
 		## For more information on these parameters, check 
-		## [Compressed representation of dynamic binary relations with applications](https://doi.org/10.1016/j.is.2017.05.003)
+		## [Compressed representation of dynamic binary relations with applications]
+		## (https://doi.org/10.1016/j.is.2017.05.003)
         # ../../dataset/dataset-adds-lists.tsv - path to a graph operations file with 
 		edge additions followed by listings
 
@@ -178,6 +179,7 @@ All implementations are provided with working **Makefile** scripts to easily com
         # 0.99 - Alpha
         # 257 - number of vertices
 		## For more information on these parameters, check
-		## [Faster Dynamic Compressed d-ary Relations](https://doi.org/10.1007/978-3-030-32686-9_30)
+		## [Faster Dynamic Compressed d-ary Relations]
+		## (https://doi.org/10.1007/978-3-030-32686-9_30)
         # ../../dataset/dataset-adds-lists.tsv - path to a graph operations file with 
 		edge additions followed by listings

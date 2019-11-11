@@ -94,13 +94,9 @@ All implementations are provided with working **Makefile** scripts to easily com
             Loop time: 70.000000
 
         #### Argument info:
-        # 9 - number of vertices
-        # 512 - TODO
-        # 4 - TODO
-        # 4 - TODO
-        # 3 - TODO
-        # 2 - TODO
-        # ../dataset/dataset-lists.tsv - path to a graph operations file with neighborhood listing operations exclusively
+        # ../dataset/dataset - path to dataset file (written without .kt extension)
+        # ../dataset/dataset-lists.tsv - path to a graph operations 
+		file with neighborhood listing operations exclusively
 
 
 #### **dk2tree**
@@ -140,12 +136,15 @@ All implementations are provided with working **Makefile** scripts to easily com
         #### Argument info:
         # dataset - base name of the tested file.
         # 9 - number of vertices
-        # 512 - TODO
-        # 4 - TODO
-        # 4 - TODO
-        # 3 - TODO
-        # 2 - TODO
-        # ../../dataset/dataset-adds-lists.tsv - path to a graph operations file with edge additions followed by listings
+        # 512 - block size
+        # 4 - n-jumps
+        # 4 - k-value
+        # 3 - n-levels
+        # 2 - last-k-value
+		## For more information on these parameters, check 
+		## [Compressed representation of dynamic binary relations with applications](https://doi.org/10.1016/j.is.2017.05.003)
+        # ../../dataset/dataset-adds-lists.tsv - path to a graph operations file with 
+		edge additions followed by listings
 
 #### **k2trie**
 
@@ -157,11 +156,14 @@ All implementations are provided with working **Makefile** scripts to easily com
             TODO OUTPUT
 
         #### Argument info:
-        # 96 - TODO
-        # 96 - TODO
-        # 256 - TODO
-        # 12 - TODO
-        # 16 - TODO
-        # 0.99 - TODO
+        # 96 - S1
+        # 96 - S2
+        # 256 - S3
+        # 12 - L1
+        # 16 - L2
+        # 0.99 - Alpha
         # 9 - number of vertices
-        # ../../dataset/dataset-adds-lists.tsv - path to a graph operations file with edge additions followed by listings
+		## For more information on these parameters, check
+		## [Faster Dynamic Compressed d-ary Relations](https://doi.org/10.1007/978-3-030-32686-9_30)
+        # ../../dataset/dataset-adds-lists.tsv - path to a graph operations file with 
+		edge additions followed by listings

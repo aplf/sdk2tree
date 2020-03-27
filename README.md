@@ -2,7 +2,7 @@
 
 ## Description
 
-This repository contains the source-code of the **sdk2tree**, the dynamic k<sup>2</sup>-tree implementation used in the paper [On dynamic succinct graph representations](https://arxiv.org/abs/1911.03195).
+This repository contains the source-code of the **sdk2tree**, the dynamic k<sup>2</sup>-tree implementation used in the paper [On dynamic succinct graph representations](https://arxiv.org/abs/1911.03195) with an [online presentation available here](https://sigport.org/documents/dynamic-succinct-graph-representations).
 
 We also provide the source-code of other k<sup>2</sup>-tree implementations compared against our **sdk2tree**.
 They are listed below, identified by the naming scheme provided in section *Experimental analysis* of our paper.

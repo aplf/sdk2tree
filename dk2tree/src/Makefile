@@ -7,10 +7,8 @@ C=gcc
 
 ifeq ($(CACHE),mem)
 OBJECTS=basic.o encoding.o util.o nodeManager-mem-complete.o k2tree-common.o k2tree-operations.o k2tree-impl.o hash.o MemoryManager.o vocUtils.o
-#OBJECTS=basic.o encoding.o util.o nodeManager-mem-complete.o k2tree-common.o k2tree-impl.o k2tree-operations.o hash.o MemoryManager.o vocUtils.o
 else
 OBJECTS=basic.o encoding.o util.o nodeManager-disk-complete.o k2tree-common.o k2tree-operations.o k2tree-impl.o hash.o MemoryManager.o vocUtils.o
-#OBJECTS=basic.o encoding.o util.o nodeManager-disk-complete.o k2tree-common.o k2tree-impl.o k2tree-operations.o hash.o MemoryManager.o vocUtils.o
 endif
 
 BINS=testGraph testRebuild testRange project
@@ -25,9 +23,6 @@ else
 endif
 
 
-
-#CFLAGS=-Wall -O9 -g3 $(MACHINE_FLAGS) $(DEFS) $(CUSTOM) -DNDEBUG
-#CFLAGS=-Wall -Wall -O9 -g3 $(MACHINE_FLAGS) $(DEFS) $(CUSTOM) -DNDEBUG
 CFLAGS=-Wall -O9 -g3 $(MACHINE_FLAGS) $(DEFS) $(CUSTOM) -DNDEBUG
 
 %.o: %.c
@@ -35,7 +30,7 @@ CFLAGS=-Wall -O9 -g3 $(MACHINE_FLAGS) $(DEFS) $(CUSTOM) -DNDEBUG
 
 all: bin
 
-dopt: CFLAGS=-Wall -g3 -O9 $(MACHINE_FLAGS) $(DEFS) $(CUSTOM) -DNDEBUG
+dopt: CFLAGS=-Wall -g3 -O9 -DNDEBUG $(MACHINE_FLAGS) $(DEFS) $(CUSTOM) 
 dopt: bin
 
 debug: CFLAGS=-Wall -g3 -DDEBUGGING $(MACHINE_FLAGS) $(DEFS) $(CUSTOM) #-std=gnu89 #-std=gnu11
@@ -47,14 +42,11 @@ archive : $(OBJECTS)
 
 bin: archive $(BINS)
 
-test1: archive
-	gcc $(CFLAGS) -o test test.c $(K2TREE) -lm
-
 project: archive
 	gcc $(CFLAGS) -o project main.c $(K2TREE) -lm
 
 unoptimized: archive
-	gcc -Wall -g3 $(MACHINE_FLAGS) $(DEFS) $(CUSTOM) -o unoptimized.exe main.c $(K2TREE) -lm
+	gcc -Wall -g3 $(MACHINE_FLAGS) $(DEFS) $(CUSTOM) -o unoptimized main.c $(K2TREE) -lm
 
 testGraph: archive
 	gcc $(CFLAGS) -o graph testCreateFromGraph.c $(K2TREE) -lm

@@ -592,7 +592,7 @@ uint recursiveMarkLinkDeleted(MREP * rep, uint p, uint q, uint node, uint level)
 	if(isBitSet(rep->btl,newnode)){
 		if(level<rep->maxLevel-1){	
 
-		return recursiveCheckLinkQuery(rep,p%div_level,q%div_level,rank(rep->btl,newnode)*K*K,level+1);
+		return recursiveMarkLinkDeleted(rep,p%div_level,q%div_level,rank(rep->btl,newnode)*K*K,level+1);
 	}
 	else{
 				posInf = (rank(rep->btl,newnode))*K*K;

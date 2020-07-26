@@ -1,0 +1,17 @@
+*.o
+
+*.exe
+
+testRange
+testRebuild
+testGraph
+testLoad
+testLoadFile
+testInsert
+testNeighbors
+testRebuild
+optimize
+project
+
+
+k2tree.a

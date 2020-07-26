@@ -143,7 +143,6 @@ main(int argc, char *argv[]) {
           addsStart = cpuTime();
           addsOngoing = true;
         }
-
         scanf("%u%u", &x, &y);
         add_link(&rep, x, y);
         addCtr++;
@@ -153,7 +152,6 @@ main(int argc, char *argv[]) {
           remsStart = cpuTime();
           remsOngoing = true;
         }
-
         scanf("%u%u", &x, &y);
         del_link(&rep, x, y);
         remCtr++;
@@ -561,7 +559,7 @@ add_link(struct data *p, uint32_t x, uint32_t y) {
       break;
   }
 
-  //printf("Rebuilding: %d -> %d/%lf\n", i+1, n+1, MAXSZ(max(p->nv,p->ne), i+1));
+  fprintf(stderr, "Rebuilding: %d -> %d/%lf\n", i+1, n+1, MAXSZ(max(p->nv,p->ne), i+1));
 
   /* Allocate more space? No, we know 'r' as a function of EPS. */
   if (i >= p->r) {

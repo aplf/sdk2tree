@@ -11,7 +11,8 @@ void changeLeaf(K2Tree * k2tree, Node ** path, uint * offsets, uint depth,
 		uint newDataEntries, uint oldDataEntries, uint newDataOnes, uint oldDataOnes,
 		ull *leafOffset, ull * ones, ull * pos);
 
-extern inline uint countOnes(K2Tree * k2tree, Node *node, int _x, uint * entries);
+//extern inline uint countOnes(K2Tree * k2tree, Node *node, int _x, uint * entries);
+extern uint countOnes(K2Tree * k2tree, Node *node, int _x, uint * entries);
 
 
 
@@ -27,4 +28,4 @@ Node * getChild(K2Tree * k2tree, Node * internalNode, int child);
 
 int getNSamples(K2Tree * k2tree, int nodeType);
 
-#endif
+#endif /* K2TREE_IMPL */

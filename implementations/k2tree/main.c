@@ -26,8 +26,8 @@ main(int argc, char *argv[]) {
 		exit(EXIT_FAILURE);
 	}
   */
-  if(argc<2){
-		fprintf(stderr,"USAGE: %s <GRAPH>\n", argv[0]);
+  if(argc<3){
+		fprintf(stderr,"USAGE: %s <GRAPH> <outfile>\n", argv[0]);
 		exit(EXIT_FAILURE);
 	}
 
@@ -58,7 +58,7 @@ main(int argc, char *argv[]) {
       continue; /* Remove '\n'... */
     }
 
-    uint32_t x, y, i;
+    uint32_t x, y;//, i;
     
     char buffer[1024];
     
@@ -101,7 +101,9 @@ main(int argc, char *argv[]) {
 
 
         scanf("%s", buffer);
-        int l = strlen(buffer);
+        
+        //strlen(buffer);
+        //int l = strlen(buffer);
 
 
         break;

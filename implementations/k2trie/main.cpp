@@ -1,12 +1,11 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdint.h>
-#include <math.h>
-#include <time.h>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <cstdint>
+#include <cmath>
+#include <ctime>
 
-
-#include "treeBlock.c"
+#include "treeBlock.h"
 
 #define cpuTime() clock()
 
@@ -14,9 +13,9 @@
 trieNode *initializeTree(char **argv) {
 	treeBlock B;
 	treeNode node;
-	uint16_t curFlag = 0;
-	uint16_t subTreeSize;
-	uint16_t level = 0;
+	//uint16_t curFlag = 0;
+	//uint16_t subTreeSize;
+	//uint16_t level = 0;
 	trieNode *t = (trieNode *) malloc(sizeof(trieNode));
 	t->children[0] = t->children[1] = t->children[2] = t->children[3] = NULL;
 	t->block = NULL;
@@ -31,7 +30,7 @@ trieNode *initializeTree(char **argv) {
 	double d= nNodes + 0.0;
 	strLen = log2(d)+0.999;
 
-	printf("Got %d %d %d, %d %d, %lf, %d, %d\n", S1, S2, S3, L1, L2, alpha, nNodes, strLen);
+	printf("Got %d %d %d, %d %d, %lf, %ld, %d\n", S1, S2, S3, L1, L2, alpha, nNodes, strLen);
 
 
 	N1 = 4;
@@ -60,7 +59,7 @@ trieNode *initializeTree(char **argv) {
 uint8_t str[50];
 
 inline void getMorton(uint32_t x, uint32_t y, int nbits) {
-	int i;
+	//int i;
 	for (int i = 0; i < nbits; i++) {
 		int n= ((x >> (nbits-1-i)&1)<<1)|(y >> (nbits-1-i)&1);
 		str[i]=n;
@@ -84,9 +83,9 @@ int main(int argc, char **argv)
     }
 
 
-    uint64_t n, n1;
-    n = nNodes;
-    n1 = n;
+    //uint64_t n, n1;
+    //n = nNodes;
+    //n1 = n;
 
     clock_t readTreeFromAdjStart = cpuTime();
     trieNode * t = initializeTree(argv);

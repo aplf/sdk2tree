@@ -140,7 +140,7 @@ main(int argc, char *argv[]) {
       continue; /* Remove '\n'... */
     }
 
-    uint32_t x, y, i;
+    uint32_t x, y;//, i;
     char buffer[1024];
     
     

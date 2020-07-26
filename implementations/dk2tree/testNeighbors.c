@@ -51,7 +51,7 @@ int main(int argc, char ** argv) {
 	DEBUG("time = %f\n", timeFromBegin());
 
 	nNeighbors = 0;
-	int j;
+	//int j;
 	uint * nn;
 	for (i = 0; i < tree->nNodesReal ; i++) {
 		if (!(i%100000)) printf(" iter %d\n", i);

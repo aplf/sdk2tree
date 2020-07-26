@@ -1,4 +1,4 @@
-# Dyanmic and static k2tree graph data structure implementations
+# Dynamic and static k2tree graph data structure implementations
 
 ## Description
 
@@ -15,7 +15,6 @@ by Miguel E. Coimbra, Alexandre P. Francisco, Luís MS Russo, Guillermo De Berna
 Its source code is available in the directory:
 
         /implementations/sdk2tree
-
 
 * **k2tree** - the static *k*<sup>2</sup>-tree structure which is described in the paper [Compact Representation of Web Graphs with Extended Functionality](https://doi.org/10.1016/j.is.2013.08.003),
 by Nieves R. Brisaboa, Susana Ladra, and Gonzalo Navarro (2014).
@@ -38,11 +37,11 @@ Its source code is available in the directory:
 
 ## Usage examples
 
-### Dummy dataset to highlight how to use the interfaces.
+### Dummy datasets to highlight how to use the interfaces.
 
 We include dummy test files in:
 
-        dataset/
+        datasets/
 
 ### Executing each implementation.
 
@@ -52,7 +51,7 @@ All implementations are provided with working **Makefile** scripts to easily com
 
         cd src
         make
-        ./project 9 < ../dataset/dataset-adds-lists.tsv
+        ./project 9 < ../../datasets/dataset-adds-lists.tsv
 
             Running dynamic k2tree (INESC-ID). 
             N[0] ->2
@@ -69,7 +68,7 @@ All implementations are provided with working **Makefile** scripts to easily com
 
         #### Argument info:
         # 9 - number of vertices
-        # ../dataset/dataset-adds-lists.tsv - path to a graph operations file with edge additions followed by listings
+        # ../../datasets/dataset-adds-lists.tsv - path to a graph operations file with edge additions followed by listings
 
 #### **k2tree**
 
@@ -77,10 +76,10 @@ All implementations are provided with working **Makefile** scripts to easily com
         make
 
         # This is the static k2-tree version, need to generate .kt format file first.
-        ./kt_buildTree ../dataset/dataset.adj dataset
-        mv dataset.kt ../dataset/
+        ./kt_buildTree ../../datasets/dataset.adj dataset
+        mv dataset.kt ../../datasets/
 
-        ./project ../dataset/dataset dataset-lists_eval < ../dataset/dataset-lists.tsv
+        ./project ../../datasets/dataset dataset-lists_eval < ../../datasets/dataset-lists.tsv
 
             (2)	
             (2)	
@@ -95,8 +94,8 @@ All implementations are provided with working **Makefile** scripts to easily com
             Loop time: 70.000000
 
         #### Argument info:
-        # ../dataset/dataset - path to dataset file (written without .kt extension)
-        # ../dataset/dataset-lists.tsv - path to a graph operations 
+        # ../../datasets/dataset - path to dataset file (written without .kt extension)
+        # ../../datasets/dataset-lists.tsv - path to a graph operations 
 		file with neighborhood listing operations exclusively
 
 
@@ -105,7 +104,7 @@ All implementations are provided with working **Makefile** scripts to easily com
         cd dk2tree
         make
         cd src
-        ./project dataset 9 512 4 4 3 2 < ../../dataset/dataset-adds-lists.tsv
+        ./project dataset 9 512 4 4 3 2 < ../../datasets/dataset-adds-lists.tsv
 
             > Running dynamic k2tree (UPC). 
             > Finished parsing arguments. 
@@ -145,7 +144,7 @@ All implementations are provided with working **Makefile** scripts to easily com
 		## For more information on these parameters, check 
 		## [Compressed representation of dynamic binary relations with applications]
 		## (https://doi.org/10.1016/j.is.2017.05.003)
-        # ../../dataset/dataset-adds-lists.tsv - path to a graph operations file with 
+        # ../../datasets/dataset-adds-lists.tsv - path to a graph operations file with 
 		edge additions followed by listings
 
 #### **k2trie**

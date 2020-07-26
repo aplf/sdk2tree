@@ -2,7 +2,7 @@
 
 ## Description
 
-This directory contains the source-code of the **dk2tree**, the dynamic k<sup>2</sup>-tree structure based on bit vectors and described in the paper [Compressed representation of dynamic binary relations with applications](https://doi.org/10.1016/j.is.2017.05.003),
+This directory contains the source-code of the **dk2tree**, the dynamic *k*<sup>2</sup>-tree structure based on bit vectors and described in the paper [Compressed representation of dynamic binary relations with applications](https://doi.org/10.1016/j.is.2017.05.003),
 by Nieves R. Brisaboa, Ana Cerdeira-Pena, Guillermo de Bernardo and Gonzalo Navarro (2017).
 
 ## Usage examples

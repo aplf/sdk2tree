@@ -2,7 +2,7 @@
 
 ## Description
 
-This directory contains the source-code of the **k2trie**, the dynamic k<sup>2</sup>-trie structure described in the paper [Faster Dynamic Compressed d-ary Relations](https://doi.org/10.1007/978-3-030-32686-9_30),
+This directory contains the source-code of the **k2trie**, the dynamic *k*<sup>2</sup>-trie structure described in the paper [Faster Dynamic Compressed d-ary Relations](https://doi.org/10.1007/978-3-030-32686-9_30),
 by Diego Arroyuelo, Guillermo de Bernardo, Travis Gagie and Gonzalo Navarro (2019).
 
 ## Usage examples

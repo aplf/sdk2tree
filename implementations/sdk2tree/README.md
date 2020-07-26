@@ -2,7 +2,7 @@
 
 ## Description
 
-This directory contains the source-code of the **sdk2tree**, the dynamic k<sup>2</sup>-tree structure described in [On Dynamic Succinct Graph Representations](https://doi.org/10.1109/DCC47342.2020.00029),
+This directory contains the source-code of the **sdk2tree**, the dynamic *k*<sup>2</sup>-tree structure described in [On Dynamic Succinct Graph Representations](https://doi.org/10.1109/DCC47342.2020.00029),
 by Miguel E. Coimbra, Alexandre P. Francisco, Luís MS Russo, Guillermo De Bernardo, Susana Ladra and Gonzalo Navarro (2020).
 
 ## Usage examples

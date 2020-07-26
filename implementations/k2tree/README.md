@@ -2,7 +2,7 @@
 
 ## Description
 
-This directory contains the source-code of the **k2tree**, the static k<sup>2</sup>-tree structure which is described in the paper [Compact Representation of Web Graphs with Extended Functionality](https://doi.org/10.1016/j.is.2013.08.003),
+This directory contains the source-code of the **k2tree**, the static *k*<sup>2</sup>-tree structure which is described in the paper [Compact Representation of Web Graphs with Extended Functionality](https://doi.org/10.1016/j.is.2013.08.003),
 by Nieves R. Brisaboa, Susana Ladra and Gonzalo Navarro (2014).
 
 ## Usage examples

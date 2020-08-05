@@ -230,10 +230,10 @@ MREP * compactCreateKTree(uint * xedges, uint *yedges, uint numberOfNodes,ulong 
 			}
 			postotal++;
 			
-			if(counterK[j]>1){
+			/*if(counterK[j]>1){
 				fprintf(stderr,"error\n");
 				exit(-1);
-			}
+			}*/
 		}
 		q = (QUEUEOFFCONS *)RemoveItemOFFCONS(q);
 	}

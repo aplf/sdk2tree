@@ -526,7 +526,8 @@ add_link_0(struct data *p, uint32_t x, uint32_t y) {
       p->adj = adjinsert(p->adj, &(p->adjsz), &(p->adjn), x, i);
     } else {
       p->elst[i].nxt = p->adj[k].nxt;
-      p->elst[p->adj[k].nxt].prv = i;
+      if (p->adj[k].nxt != 0xffffffff)
+        p->elst[p->adj[k].nxt].prv = i;
       p->adj[k].nxt = i;
     }
 

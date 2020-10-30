@@ -648,13 +648,6 @@ add_link(struct data *p, uint32_t x, uint32_t y) {
   p->ne ++;
 }
 
-static struct data *p4readde;
-static int
-readde(uint32_t u, uint32_t v) {
-  add_link(p4readde, u, v);
-  return 0;
-}
-
 static void
 del_link(struct data *p, uint32_t x, uint32_t y) {
   uint32_t k, l;
@@ -692,28 +685,96 @@ del_link(struct data *p, uint32_t x, uint32_t y) {
 
     if (ned > p->ne / TAU(p->ne)) {
       /* Rebuild data structure... */
-      MREP ** old = p->k2t;
-      uint32_t old_maxr = p->maxr;
-      p->maxr = 0;
-      p->k2t = malloc(sizeof(MREP *)*p->r);
-      memset(p->k2t, 0x0, sizeof(MREP *)*p->r);
 
-      p->ne = p->eln;
-      p4readde = p;
+      /* Let us look for an 'i'... */
+      uint32_t n = MAXSZ(max(p->nv,p->ne), 0), i, j;
+      for (i = 0; i < p->r; i++) {
+        if (p->k2t[i] != NULL)
+          n += p->k2t[i]->numberOfEdges;
 
-      for (l = 0; l <= old_maxr; l++) {
-        if (old[l] != NULL) {
-
-          edgeIterator(old[l], readde);
-
-          destroyBitRankW32Int(old[l]->btl);
-          free(old[l]);
-          old[l] = NULL;
-        }
+        if (MAXSZ(max(p->nv,p->ne), i+1) > n + 1)
+        break;
       }
 
-      p4readde = NULL;
-      free(old);
+      fprintf(stderr, "Rebuilding: %d -> %d/%lf\n", i+1, n+1, MAXSZ(max(p->nv,p->ne), i+1));
+
+      /* Allocate more space? No, we know 'r' as a function of EPS. */
+      if (i >= p->r) {
+        fprintf(stderr, "Error: collection too big...\n");
+        exit(EXIT_FAILURE);
+      }
+
+      p->maxr = max(i, p->maxr);
+
+      /* Space for edges in the dynamic structure. */
+      uint32_t *xedges = malloc(sizeof(uint32_t)*p->eln);
+      uint32_t *yedges = malloc(sizeof(uint32_t)*p->eln);
+
+      /* Load edges in C_0... */
+      k = 0;
+      for (j = 0; j < p->eln; j++) {
+        xedges[k] = p->elst[p->efree[j]].x;
+        yedges[k] = p->elst[p->efree[j]].y;
+        k++;
+      }
+
+      assert(k == p->eln);
+
+      /* Cleanup C_0. */
+      memset(p->elst, 0x0, sizeof(struct edge)*p->elsz);
+      for (l = 0; l < p->elsz; l++)
+        p->efree[l] = l;
+      p->eln = 0;
+      memset(p->htable, 0xff, sizeof(uint32_t)*p->htsz);
+      p->htn = 0;
+      memset(p->adj, 0xff, sizeof(struct adje)*p->adjsz);
+      p->adjn = 0;
+
+      /*for (l = 0; l < k; l++)
+        printf("%d -> %d\n", xedges[l], yedges[l]); */
+
+      /* Build new C_i. */
+      uint32_t max_level = floor(log(p->nv)/log(p->k));
+      if(floor(log(p->nv)/log(p->k)) == (log(p->nv)/log(p->k)))
+        max_level = max_level-1;
+      /* Maybe we should remap nodes and set the number of nodes to the
+       * actual number of nodes in the collection. */
+      MREP * tmp = compactCreateKTree(xedges, yedges, p->nv, k, max_level);
+      /* Initializing missing stuff... Should we keep it always? */
+      tmp->div_level_table = p->div_level_table;
+
+      /* Merge and remove old graphs. */
+      for (j = 0; j <= i; j++) {
+        if (p->k2t[j] != NULL) {
+          MREP * old = tmp;
+
+          tmp = k2tree_union(old, p->k2t[j]);
+          tmp->div_level_table = p->div_level_table;
+
+          destroyBitRankW32Int(p->k2t[j]->btl);
+          free(p->k2t[j]);
+
+          destroyBitRankW32Int(old->btl);
+          free(old);
+        }
+        p->k2t[j] = NULL;
+      }
+
+      assert(p->k2t[i] == NULL);
+      p->k2t[i] = tmp;
+
+      /* Setup common data structures... */
+      p->k2t[i]->info = p->info;
+      p->k2t[i]->element = p->element;
+      p->k2t[i]->basex = p->basex;
+      p->k2t[i]->basey = p->basey;
+      p->k2t[i]->iniq = -1;
+      p->k2t[i]->finq = -1;
+      p->k2t[i]->info2[0] = p->info2[0];
+      p->k2t[i]->info2[1] = p->info2[1];
+
+      free(xedges);
+      free(yedges);
     }
   }
 }

@@ -694,7 +694,7 @@ del_link(struct data *p, uint32_t x, uint32_t y) {
         if (p->k2t[i] != NULL)
           n += p->k2t[i]->numberOfEdges;
 
-        if (MAXSZ(max(p->nv,p->ne), i+1) > n + 1)
+        if (MAXSZ(max(p->nv,p->ne), i+1) > p->ne + 1)
         break;
       }
 
@@ -705,8 +705,6 @@ del_link(struct data *p, uint32_t x, uint32_t y) {
         fprintf(stderr, "Error: collection too big...\n");
         exit(EXIT_FAILURE);
       }
-
-      p->maxr = max(i, p->maxr);
 
       /* Space for edges in the dynamic structure. */
       uint32_t *xedges = malloc(sizeof(uint32_t)*(p->eln+1));
@@ -749,7 +747,7 @@ del_link(struct data *p, uint32_t x, uint32_t y) {
       tmp->div_level_table = p->div_level_table;
 
       /* Merge and remove old graphs. */
-      for (j = 0; j <= i; j++) {
+      for (j = 0; j <= p->maxr; j++) {
         if (p->k2t[j] != NULL) {
           MREP * old = tmp;
 
@@ -781,6 +779,8 @@ del_link(struct data *p, uint32_t x, uint32_t y) {
 
       free(xedges);
       free(yedges);
+
+      p->maxr = max(i, p->maxr);
 
       if (! oo) compact2MarkLinkDeleted(p->k2t[i], 1, 1);
     }

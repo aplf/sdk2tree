@@ -689,7 +689,7 @@ del_link(struct data *p, uint32_t x, uint32_t y) {
       /* Rebuild data structure... */
 
       /* Let us look for an 'i'... */
-      uint32_t n = MAXSZ(max(p->nv,p->ne), 0), i, j;
+      uint32_t n = p->eln, i, j;
       for (i = 0; i < p->r; i++) {
         if (p->k2t[i] != NULL)
           n += p->k2t[i]->numberOfEdges;
@@ -721,6 +721,7 @@ del_link(struct data *p, uint32_t x, uint32_t y) {
       }
 
     	/* Add the new link. */
+      int oo = check_link(p, 1, 1);
       xedges[k] = 1;
       yedges[k] = 1;
       k++;
@@ -780,6 +781,8 @@ del_link(struct data *p, uint32_t x, uint32_t y) {
 
       free(xedges);
       free(yedges);
+
+      if (! oo) compact2MarkLinkDeleted(p->k2t[i], 1, 1);
     }
   }
 }

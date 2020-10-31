@@ -687,7 +687,7 @@ del_link(struct data *p, uint32_t x, uint32_t y) {
       /* Rebuild data structure... */
 
       /* Let us look for an 'i'... */
-      uint32_t n = MAXSZ(max(p->nv,p->ne), 0), i, j;
+      uint32_t n = p->eln, i, j;
       for (i = 0; i < p->r; i++) {
         if (p->k2t[i] != NULL)
           n += p->k2t[i]->numberOfEdges;

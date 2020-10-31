@@ -233,6 +233,8 @@ main(int argc, char *argv[]) {
         printf("Save time: %Lf\n", total_save_time);
         break;
       case 'x':
+        fprintf(stderr, "> |V| = %u, |E| = %u\n", rep.nv, rep.ne);
+
         free(rep.htable);
         free(rep.adj);
         free(rep.elst);
@@ -255,7 +257,7 @@ main(int argc, char *argv[]) {
         clock_t ending = cpuTime();
         printf("Loop time: %f\n", ((float)(ending - beginning))/CLOCKS_PER_SEC);
 
-        FILE *f = fopen("dynamic_INESC_k2tree_times.tsv", "a");
+        FILE *f = fopen("sdk2tree_times.tsv", "a");
 
 
         fprintf(f, "start_time;loop_time;exclusive_save_time;time_per_add_op;time_per_rem_op;time_per_list_op;time_per_check_op;add_op_count;add_op_exclusive_time;rem_op_count;rem_op_exclusive_time;list_op_count;list_op_exclusive_time;check_op_count;check_op_exclusive_time\n");
@@ -284,7 +286,7 @@ main(int argc, char *argv[]) {
             );
 
         fclose(f);
-        exit(EXIT_SUCCESS);
+        return EXIT_SUCCESS;
         break;
       default:
         fprintf(stderr, "Invalid instruction: %c\n", cmd);

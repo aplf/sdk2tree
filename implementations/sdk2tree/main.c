@@ -707,8 +707,8 @@ del_link(struct data *p, uint32_t x, uint32_t y) {
       p->maxr = max(i, p->maxr);
 
       /* Space for edges in the dynamic structure. */
-      uint32_t *xedges = malloc(sizeof(uint32_t)*p->eln);
-      uint32_t *yedges = malloc(sizeof(uint32_t)*p->eln);
+      uint32_t *xedges = malloc(sizeof(uint32_t)*(p->eln+1));
+      uint32_t *yedges = malloc(sizeof(uint32_t)*(p->eln+1));
 
       /* Load edges in C_0... */
       k = 0;
@@ -718,7 +718,12 @@ del_link(struct data *p, uint32_t x, uint32_t y) {
         k++;
       }
 
-      assert(k == p->eln);
+    	/* Add the new link. */
+      xedges[k] = 1;
+      yedges[k] = 1;
+      k++;
+
+      assert(k == p->eln+1);
 
       /* Cleanup C_0. */
       memset(p->elst, 0x0, sizeof(struct edge)*p->elsz);
@@ -729,9 +734,6 @@ del_link(struct data *p, uint32_t x, uint32_t y) {
       p->htn = 0;
       memset(p->adj, 0xff, sizeof(struct adje)*p->adjsz);
       p->adjn = 0;
-
-      /*for (l = 0; l < k; l++)
-        printf("%d -> %d\n", xedges[l], yedges[l]); */
 
       /* Build new C_i. */
       uint32_t max_level = floor(log(p->nv)/log(p->k));
@@ -772,6 +774,7 @@ del_link(struct data *p, uint32_t x, uint32_t y) {
       p->k2t[i]->finq = -1;
       p->k2t[i]->info2[0] = p->info2[0];
       p->k2t[i]->info2[1] = p->info2[1];
+      p->k2t[i]->numberOfMarkedEdges = 0;
 
       free(xedges);
       free(yedges);

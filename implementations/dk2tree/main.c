@@ -34,7 +34,7 @@ K2Tree * init_structure(int argc, char * argv[]) {
   char * vocFile = (char *)malloc(256*sizeof(char));
   uint nodes, nodesOrig;
   nodes = atoi(argv[2]);
-  nodesOrig = 0;
+  nodesOrig = nodes;
 
   uint blockSize = atoi(argv[3]);
   uint njumps = atoi(argv[4]);
@@ -237,6 +237,7 @@ main(int argc, char *argv[]) {
 
         break;
       case 'x':
+        fprintf(stderr, "> |V| = %u, |E| = %u\n", k2tree->nNodesReal, k2tree->nEdges);
 
        	printf("Memory usage : %ld\n", memUsageK2Tree(k2tree));
         printf("Disk usage : %ld\n", diskUsageK2Tree(k2tree));
@@ -249,7 +250,7 @@ main(int argc, char *argv[]) {
         clock_t ending = cpuTime();
         printf("Loop time: %Lf\n", (long double)(ending - beginning));
 
-        FILE *f = fopen("dynamic_UPC_k2tree_times.tsv", "a");
+        FILE *f = fopen("dk2tree_times.tsv", "a");
         
         fprintf(f, "start_time;loop_time;exclusive_save_time;time_per_add_op;time_per_rem_op;time_per_list_op;time_per_check_op;add_op_count;add_op_exclusive_time;rem_op_count;rem_op_exclusive_time;list_op_count;list_op_exclusive_time;check_op_count;check_op_exclusive_time\n");
         long double initTime = ((long double)(readTreeFromAdjStop - readTreeFromAdjStart))/CLOCKS_PER_SEC;

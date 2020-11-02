@@ -119,7 +119,7 @@ main(int argc, char *argv[]) {
         //strcpy(resname, argv[3]);
         //strcat(resname, "_static_k2tree_times.tsv");
         //FILE *f = fopen(resname, "w");
-        FILE *f = fopen("static_k2tree_times.tsv", "a");
+        FILE *f = fopen("k2tree_times.tsv", "a");
        
         fprintf(f, "start_time;loop_time;time_per_list_op;time_per_check_op;list_op_count;list_op_exclusive_time;check_op_count;check_op_exclusive_time\n");
         long double initTime = ((long double)(readTreeFromAdjStop - readTreeFromAdjStart))/CLOCKS_PER_SEC;

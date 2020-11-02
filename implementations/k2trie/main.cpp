@@ -231,9 +231,9 @@ int main(int argc, char **argv)
         case 'x':
         {
         	uint64_t treeSize = sizeTrie(t);//B.size();
-			fprintf(stderr, "Total size: %lu bytes\n", treeSize);
-//			printf("Bits per edge of the graph: %f\n", ((float)treeSize*8)/nEdges);
-			fprintf(stderr, "Numero de bloques en la estructura: %lu\n", totalBlocks);
+			    fprintf(stderr, "Total size: %lu bytes\n", treeSize);
+          // printf("Bits per edge of the graph: %f\n", ((float)treeSize*8)/nEdges);
+			    fprintf(stderr, "Numero de bloques en la estructura: %lu\n", totalBlocks);
         }
         case 'z':
         {
@@ -241,7 +241,7 @@ int main(int argc, char **argv)
           clock_t ending = cpuTime();
           printf("Loop time: %Lf\n", (long double)(ending - beginning));
 
-          FILE *f = fopen("dynamic_trie_times.tsv", "a");
+          FILE *f = fopen("k2trie_times.tsv", "a");
 
           fprintf(f, "start_time;loop_time;exclusive_save_time;time_per_add_op;time_per_rem_op;time_per_list_op;time_per_check_op;add_op_count;add_op_exclusive_time;rem_op_count;rem_op_exclusive_time;list_op_count;list_op_exclusive_time;check_op_count;check_op_exclusive_time\n");
           long double initTime = ((long double)(readTreeFromAdjStop - readTreeFromAdjStart))/CLOCKS_PER_SEC;

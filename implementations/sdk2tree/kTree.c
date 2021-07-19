@@ -578,6 +578,43 @@ uint compact2CheckLinkQuery(MREP * rep, uint p, uint q){
 	return recursiveCheckLinkQuery(rep,p,q,0,0);
 }
 
+uint recursiveCheckAddLinkQuery(MREP * rep, uint p, uint q, uint node, uint level);
+
+uint recursiveCheckAddLinkQuery(MREP * rep, uint p, uint q, uint node, uint level){
+	uint posInf;
+
+	int div_level,newnode;
+
+		div_level = rep->div_level_table[level];
+		
+	newnode = p/div_level*K + q/div_level;
+	newnode += node;
+	if(isBitSet(rep->btl,newnode)){
+		if(level<rep->maxLevel-1){	
+
+		return recursiveCheckAddLinkQuery(rep,p%div_level,q%div_level,rank(rep->btl,newnode)*K*K,level+1);
+	}
+	else{
+				posInf = (rank(rep->btl,newnode))*K*K;
+					if(bitget(rep->btl->data,posInf+(q%K+(p%K)*K))){
+						return 1;
+					}	else {
+            bitset(rep->btl->data,posInf+(q%K+(p%K)*K));
+            if(rep->numberOfMarkedEdges > 0)
+              rep->numberOfMarkedEdges--;
+  					return 1;
+
+          }
+		}
+	}
+	return 0;
+}
+
+uint compact2CheckAddLinkQuery(MREP * rep, uint p, uint q){
+	return recursiveCheckAddLinkQuery(rep,p,q,0,0);
+}
+
+
 uint recursiveMarkLinkDeleted(MREP * rep, uint p, uint q, uint node, uint level);
 
 uint recursiveMarkLinkDeleted(MREP * rep, uint p, uint q, uint node, uint level){

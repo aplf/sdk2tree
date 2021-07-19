@@ -73,6 +73,7 @@ static void init_data(struct data *p, uint32_t nv);
 static void add_link(struct data *p, uint32_t x, uint32_t y);
 static void del_link(struct data *p, uint32_t x, uint32_t y);
 static int check_link(struct data *p, uint32_t x, uint32_t y);
+static int check_add_link(struct data *p, uint32_t x, uint32_t y);
 static void list_neighbors(struct data *p, uint32_t x);
 
 #define EPS 0.25
@@ -544,7 +545,7 @@ static void
 add_link(struct data *p, uint32_t x, uint32_t y) {
   uint32_t i, j, k, l, n;
 
-  if (check_link(p, x, y))
+  if (check_add_link(p, x, y))
     return;
 
   if (p->eln < MAXSZ(max(p->nv,p->ne), 0)) {
@@ -800,6 +801,21 @@ check_link(struct data *p, uint32_t x, uint32_t y) {
 
   return 0;
 }
+
+static int
+check_add_link(struct data *p, uint32_t x, uint32_t y) {
+  uint32_t i;
+
+  if (hfind(p->htable, &(p->htsz), p->elst, x, y) != 0xffffffff)
+    return 1;
+
+  for (i = 0; i <= p->maxr; i++)
+    if (p->k2t[i] !=NULL && compact2CheckAddLinkQuery(p->k2t[i], x, y))
+      return 1;
+
+  return 0;
+}
+
 
 static void
 list_neighbors(struct data *p, uint32_t x) {

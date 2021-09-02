@@ -42,6 +42,7 @@ uint * compactInverseList(MREP * rep, int y);
 uint ** compactRangeQuery(MREP * rep, uint p1, uint p2, uint q1, uint q2);
 uint compactCheckLinkQuery(MREP * rep, uint p, uint q);
 uint compact2CheckLinkQuery(MREP * rep, uint p, uint q);
+uint compact2CheckAddLinkQuery(MREP * rep, uint p, uint q);
 uint compactCheckRangeQuery(MREP * rep, uint p1, uint p2, uint q1, uint q2);
 uint compact2MarkLinkDeleted(MREP * rep, uint p, uint q);
 

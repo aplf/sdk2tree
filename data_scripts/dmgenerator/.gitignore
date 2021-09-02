@@ -1,0 +1,8 @@
+
+*.mak
+*.hls
+*.i
+*.o
+*.s
+*.exe
+dmgen
